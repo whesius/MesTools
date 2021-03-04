@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace MESTools
 {
+    /// <summary>
+    /// Impersonate is needed to read msmq messages
+    /// </summary>
     public static class ImpersonationUtil
     {
         public static bool Impersonate()
