@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="MESTools.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="AdminUser" Type="System.String" Scope="User">
+      <Value Profile="(Default)">adm-whesius</Value>
+    </Setting>
+    <Setting Name="AdminDomain" Type="System.String" Scope="User">
+      <Value Profile="(Default)">UABEPRD</Value>
+    </Setting>
+    <Setting Name="AdminPassword" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Letme!in26bn9</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
