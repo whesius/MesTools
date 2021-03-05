@@ -168,6 +168,7 @@
             this.dataGridView1.Size = new System.Drawing.Size(1040, 311);
             this.dataGridView1.TabIndex = 5;
             this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
+            this.dataGridView1.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGridView1_DataError);
             // 
             // tabControl
             // 
@@ -248,7 +249,7 @@
             this.tabPageMSMQ.Margin = new System.Windows.Forms.Padding(5);
             this.tabPageMSMQ.Name = "tabPageMSMQ";
             this.tabPageMSMQ.Padding = new System.Windows.Forms.Padding(5);
-            this.tabPageMSMQ.Size = new System.Drawing.Size(1050, 517);
+            this.tabPageMSMQ.Size = new System.Drawing.Size(1050, 468);
             this.tabPageMSMQ.TabIndex = 1;
             this.tabPageMSMQ.Text = "MSMQ";
             this.tabPageMSMQ.UseVisualStyleBackColor = true;
@@ -261,9 +262,10 @@
             this.dataGridViewMSMQ.Location = new System.Drawing.Point(5, 75);
             this.dataGridViewMSMQ.Margin = new System.Windows.Forms.Padding(5);
             this.dataGridViewMSMQ.Name = "dataGridViewMSMQ";
-            this.dataGridViewMSMQ.Size = new System.Drawing.Size(1040, 437);
+            this.dataGridViewMSMQ.Size = new System.Drawing.Size(1040, 388);
             this.dataGridViewMSMQ.TabIndex = 3;
             this.dataGridViewMSMQ.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridViewMSMQ_CellFormatting);
+            this.dataGridViewMSMQ.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGridViewMSMQ_DataError);
             // 
             // panel4
             // 
@@ -344,7 +346,7 @@
             this.tabPageAppPools.Margin = new System.Windows.Forms.Padding(2);
             this.tabPageAppPools.Name = "tabPageAppPools";
             this.tabPageAppPools.Padding = new System.Windows.Forms.Padding(5);
-            this.tabPageAppPools.Size = new System.Drawing.Size(1050, 517);
+            this.tabPageAppPools.Size = new System.Drawing.Size(1050, 468);
             this.tabPageAppPools.TabIndex = 2;
             this.tabPageAppPools.Text = "Application Pools";
             this.tabPageAppPools.UseVisualStyleBackColor = true;
@@ -357,9 +359,10 @@
             this.dataGridViewAppPools.Location = new System.Drawing.Point(5, 75);
             this.dataGridViewAppPools.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridViewAppPools.Name = "dataGridViewAppPools";
-            this.dataGridViewAppPools.Size = new System.Drawing.Size(1040, 437);
+            this.dataGridViewAppPools.Size = new System.Drawing.Size(1040, 388);
             this.dataGridViewAppPools.TabIndex = 0;
             this.dataGridViewAppPools.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridViewAppPools_CellFormatting);
+            this.dataGridViewAppPools.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGridViewAppPools_DataError);
             // 
             // panel5
             // 
@@ -461,7 +464,7 @@
             // adminSettingsToolStripMenuItem
             // 
             this.adminSettingsToolStripMenuItem.Name = "adminSettingsToolStripMenuItem";
-            this.adminSettingsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.adminSettingsToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.adminSettingsToolStripMenuItem.Text = "Admin Settings";
             this.adminSettingsToolStripMenuItem.Click += new System.EventHandler(this.adminSettingsToolStripMenuItem_Click);
             // 

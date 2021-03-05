@@ -60,6 +60,8 @@ namespace MESTools
 
         private void ListServiceControllers()
         {
+            ImpersonationUtil.Impersonate();
+
             if (textBoxServer.Text.Any())
             {
                 var searchFor = this.textBoxFilterServices.Text?.ToUpper();
@@ -397,6 +399,21 @@ namespace MESTools
         {
             var form = new AdminSettings();
             form.ShowDialog();
+        }
+
+        private void dataGridView1_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            e.ThrowException = false;
+        }
+
+        private void dataGridViewMSMQ_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            e.ThrowException = false;
+        }
+
+        private void dataGridViewAppPools_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            e.ThrowException = false;
         }
     }
 }
