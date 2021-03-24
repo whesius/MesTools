@@ -314,13 +314,23 @@ namespace MESTools
                     myFilter.ArrivedTime = true;
                     messageQ.MessageReadPropertyFilter = myFilter;
 
-                    var allMessages = messageQ.GetAllMessages();
-                    msmq.OldestArrivedTime = allMessages.OrderBy(v => v.ArrivedTime).Select(v => v.ArrivedTime).FirstOrDefault();
-                    msmq.NewestArrivedTime = allMessages.OrderBy(v => v.ArrivedTime).Select(v => v.ArrivedTime).LastOrDefault();
+                    try
+                    {
+                        var allMessages = messageQ.GetAllMessages();
 
-                    var thresHold = DateTime.Now.AddMinutes(-1);
+                        msmq.OldestArrivedTime = allMessages.OrderBy(v => v.ArrivedTime).Select(v => v.ArrivedTime).FirstOrDefault();
+                        msmq.NewestArrivedTime = allMessages.OrderBy(v => v.ArrivedTime).Select(v => v.ArrivedTime).LastOrDefault();
 
-                    msmq.MessagesInQueueLongerThan1Minutes = allMessages.Where(v => v.ArrivedTime < thresHold).Count();
+                        var thresHold = DateTime.Now.AddMinutes(-1);
+
+                        msmq.MessagesInQueueLongerThan1Minutes = allMessages.Where(v => v.ArrivedTime < thresHold).Count();
+                    }
+                    catch
+                    {
+                        // Problaby security related. Cannot read messages from queue
+                        
+                    }
+                   
                 }
 
                 list.Add(msmq);
@@ -388,7 +398,7 @@ namespace MESTools
             {
                 var text = $"{this.comboBoxMsmqServers.SelectedItem}";
                 var index = text.IndexOf(":");
-                this.textBoxMsmqServer.Text = text.Substring(index).Trim();
+                this.textBoxMsmqServer.Text = text.Substring(index+1).Trim();
             }
             else
             {
@@ -402,7 +412,7 @@ namespace MESTools
             {
                 var text = $"{this.comboBoxAppServers.SelectedItem}";
                 var index = text.IndexOf(":");
-                this.textBoxAppServer.Text = text.Substring(index).Trim();
+                this.textBoxAppServer.Text = text.Substring(index + 1).Trim();
             }
             else {
                 this.textBoxAppServer.Text = null;
