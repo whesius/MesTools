@@ -29,7 +29,19 @@ namespace MESTools
         {
             InitializeComponent();
 
-            string[] list = {"", "TST: UABE0MDV13.UABEPRD.COM", "ACC: UABE0MAC04.UABEPRD.COM", "ACC: UABE0MAC06.UABEPRD.COM", "ACC: UABE0MAC10.UABEPRD.COM", "PRD: UABE0MAP07.UABEPRD.COM", "PRD: UABE0MAP08.UABEPRD.COM", "PRD: UABE0MAP12.UABEPRD.COM" };
+            string[] list = {"",
+                "MES TST: UABE0MDV13.UABEPRD.COM",
+                "MES ACC: UABE0MAC04.UABEPRD.COM",
+                "MES ACC: UABE0MAC06.UABEPRD.COM",
+                "MES ACC: UABE0MAC10.UABEPRD.COM",
+                "MES IRIS PRD: UABE0MAP07.UABEPRD.COM",
+                "MES WCF PRD: UABE0MAP08.UABEPRD.COM",
+                "MES IRIS PRD: UABE0MAP12.UABEPRD.COM",
+                "BT TST: UABE0MDV06.UABEPRD.COM",
+                "BT ACC: UABE0MDV03.UABEPRD.COM",
+                "BT PRD: UABE0MAP02.UABEPRD.COM",
+
+            };
             this.comboBoxServers.DataSource = list.ToArray();
             this.comboBoxServers.SelectedIndexChanged += ComboBoxServers_SelectedIndexChanged;
 
@@ -45,7 +57,9 @@ namespace MESTools
         {
             if (this.comboBoxServers.SelectedIndex > 0)
             {
-                this.textBoxServer.Text = $"{this.comboBoxServers.SelectedItem}".Substring(5);
+                var text = $"{this.comboBoxServers.SelectedItem}";
+                var index = text.IndexOf(":");
+                this.textBoxServer.Text = text.Substring(index+1).Trim();
             }
             else
             {
@@ -372,7 +386,9 @@ namespace MESTools
         {
             if(this.comboBoxMsmqServers.SelectedIndex > 0)
             {
-                this.textBoxMsmqServer.Text = $"{this.comboBoxMsmqServers.SelectedItem}".Substring(5);
+                var text = $"{this.comboBoxMsmqServers.SelectedItem}";
+                var index = text.IndexOf(":");
+                this.textBoxMsmqServer.Text = text.Substring(index).Trim();
             }
             else
             {
@@ -382,8 +398,11 @@ namespace MESTools
 
         private void comboBoxAppServers_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (this.comboBoxAppServers.SelectedIndex > 0) {
-                this.textBoxAppServer.Text = $"{this.comboBoxAppServers.SelectedItem}".Substring(5);
+            if (this.comboBoxAppServers.SelectedIndex > 0)
+            {
+                var text = $"{this.comboBoxAppServers.SelectedItem}";
+                var index = text.IndexOf(":");
+                this.textBoxAppServer.Text = text.Substring(index).Trim();
             }
             else {
                 this.textBoxAppServer.Text = null;
