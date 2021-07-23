@@ -64,6 +64,8 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.adminSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.buttonRecycle = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabControl.SuspendLayout();
@@ -77,6 +79,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAppPools)).BeginInit();
             this.panel5.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBoxServer
@@ -122,11 +125,11 @@
             this.panel2.Controls.Add(this.buttonStopService);
             this.panel2.Controls.Add(this.buttonStartService);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(5, 386);
+            this.panel2.Location = new System.Drawing.Point(5, 388);
             this.panel2.Margin = new System.Windows.Forms.Padding(5);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(15);
-            this.panel2.Size = new System.Drawing.Size(1040, 77);
+            this.panel2.Size = new System.Drawing.Size(1040, 75);
             this.panel2.TabIndex = 4;
             // 
             // buttonStopService
@@ -135,7 +138,7 @@
             this.buttonStopService.Location = new System.Drawing.Point(799, 15);
             this.buttonStopService.Margin = new System.Windows.Forms.Padding(5);
             this.buttonStopService.Name = "buttonStopService";
-            this.buttonStopService.Size = new System.Drawing.Size(113, 47);
+            this.buttonStopService.Size = new System.Drawing.Size(113, 45);
             this.buttonStopService.TabIndex = 1;
             this.buttonStopService.Text = "Stop";
             this.buttonStopService.UseVisualStyleBackColor = true;
@@ -147,7 +150,7 @@
             this.buttonStartService.Location = new System.Drawing.Point(912, 15);
             this.buttonStartService.Margin = new System.Windows.Forms.Padding(5);
             this.buttonStartService.Name = "buttonStartService";
-            this.buttonStartService.Size = new System.Drawing.Size(113, 47);
+            this.buttonStartService.Size = new System.Drawing.Size(113, 45);
             this.buttonStartService.TabIndex = 0;
             this.buttonStartService.Text = "Start";
             this.buttonStartService.UseVisualStyleBackColor = true;
@@ -165,7 +168,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1040, 311);
+            this.dataGridView1.Size = new System.Drawing.Size(1040, 313);
             this.dataGridView1.TabIndex = 5;
             this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
             this.dataGridView1.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGridView1_DataError);
@@ -205,7 +208,7 @@
             this.panel3.Location = new System.Drawing.Point(5, 5);
             this.panel3.Margin = new System.Windows.Forms.Padding(5);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1040, 381);
+            this.panel3.Size = new System.Drawing.Size(1040, 383);
             this.panel3.TabIndex = 6;
             // 
             // panel1
@@ -341,6 +344,7 @@
             // tabPageAppPools
             // 
             this.tabPageAppPools.Controls.Add(this.dataGridViewAppPools);
+            this.tabPageAppPools.Controls.Add(this.panel6);
             this.tabPageAppPools.Controls.Add(this.panel5);
             this.tabPageAppPools.Location = new System.Drawing.Point(4, 35);
             this.tabPageAppPools.Margin = new System.Windows.Forms.Padding(2);
@@ -359,7 +363,7 @@
             this.dataGridViewAppPools.Location = new System.Drawing.Point(5, 75);
             this.dataGridViewAppPools.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridViewAppPools.Name = "dataGridViewAppPools";
-            this.dataGridViewAppPools.Size = new System.Drawing.Size(1040, 388);
+            this.dataGridViewAppPools.Size = new System.Drawing.Size(1040, 313);
             this.dataGridViewAppPools.TabIndex = 0;
             this.dataGridViewAppPools.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridViewAppPools_CellFormatting);
             this.dataGridViewAppPools.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGridViewAppPools_DataError);
@@ -468,6 +472,27 @@
             this.adminSettingsToolStripMenuItem.Text = "Admin Settings";
             this.adminSettingsToolStripMenuItem.Click += new System.EventHandler(this.adminSettingsToolStripMenuItem_Click);
             // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.buttonRecycle);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel6.Location = new System.Drawing.Point(5, 388);
+            this.panel6.Name = "panel6";
+            this.panel6.Padding = new System.Windows.Forms.Padding(15);
+            this.panel6.Size = new System.Drawing.Size(1040, 75);
+            this.panel6.TabIndex = 2;
+            // 
+            // buttonRecycle
+            // 
+            this.buttonRecycle.Dock = System.Windows.Forms.DockStyle.Right;
+            this.buttonRecycle.Location = new System.Drawing.Point(915, 15);
+            this.buttonRecycle.Name = "buttonRecycle";
+            this.buttonRecycle.Size = new System.Drawing.Size(110, 45);
+            this.buttonRecycle.TabIndex = 0;
+            this.buttonRecycle.Text = "Recyle";
+            this.buttonRecycle.UseVisualStyleBackColor = true;
+            this.buttonRecycle.Click += new System.EventHandler(this.buttonRecycle_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -499,6 +524,7 @@
             this.panel5.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.panel6.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -542,6 +568,8 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem adminSettingsToolStripMenuItem;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Button buttonRecycle;
     }
 }
 

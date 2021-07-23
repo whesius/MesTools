@@ -1,6 +1,8 @@
-﻿using MESTools.src;
+﻿using IBM.WMQ;
+using MESTools.src;
 using Microsoft.Web.Administration;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
@@ -443,6 +445,114 @@ namespace MESTools
         private void dataGridViewAppPools_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
             e.ThrowException = false;
+        }
+
+        const String connectionType = MQC.TRANSPORT_MQSERIES_CLIENT;
+
+        // Define the name of the queue manager to use (applies to all connections)
+        const String qManager = "your_Q_manager";
+
+        // Define the name of your host connection (applies to client connections only)
+        const String hostName = "your_hostname";
+
+        // Define the name of the channel to use (applies to client connections only)
+        const String channel = "your_channelname";
+
+        private void PutAndGetMqSeries()
+        {
+            Hashtable connectionProperties = init(connectionType);
+
+            // Create a connection to the queue manager using the connection
+            // properties just defined
+            MQQueueManager qMgr = new MQQueueManager(qManager, connectionProperties);
+
+            // Set up the options on the queue we want to open
+            int openOptions = MQC.MQOO_INPUT_AS_Q_DEF | MQC.MQOO_OUTPUT;
+
+            // Now specify the queue that we want to open,and the open options
+            MQQueue system_default_local_queue =
+              qMgr.AccessQueue("SYSTEM.DEFAULT.LOCAL.QUEUE", openOptions);
+
+            // Define an IBM MQ message, writing some text in UTF format
+            MQMessage hello_world = new MQMessage();
+            hello_world.WriteUTF("Hello World!");
+
+            // Specify the message options
+            MQPutMessageOptions pmo = new MQPutMessageOptions(); // accept the defaults,
+                                                                 // same as MQPMO_DEFAULT
+
+            // Put the message on the queue
+            system_default_local_queue.Put(hello_world, pmo);
+
+            // Get the message back again
+
+            // First define an IBM MQ message buffer to receive the message
+            MQMessage retrievedMessage = new MQMessage();
+            retrievedMessage.MessageId = hello_world.MessageId;
+
+            // Set the get message options
+            MQGetMessageOptions gmo = new MQGetMessageOptions(); //accept the defaults
+                                                                 //same as MQGMO_DEFAULT
+
+            // Get the message off the queue
+            system_default_local_queue.Get(retrievedMessage, gmo);
+
+            // Prove we have the message by displaying the UTF message text
+            String msgText = retrievedMessage.ReadUTF();
+            Console.WriteLine("The message is: {0}", msgText);
+
+            // Close the queue
+            system_default_local_queue.Close();
+
+            // Disconnect from the queue manager
+            qMgr.Disconnect();
+        }
+
+        static Hashtable init(String connectionType)
+        {
+            Hashtable connectionProperties = new Hashtable();
+
+            // Add the connection type
+            connectionProperties.Add(MQC.TRANSPORT_PROPERTY, connectionType);
+
+            // Set up the rest of the connection properties, based on the
+            // connection type requested
+            switch (connectionType)
+            {
+                case MQC.TRANSPORT_MQSERIES_BINDINGS:
+                    break;
+                case MQC.TRANSPORT_MQSERIES_CLIENT:
+                case MQC.TRANSPORT_MQSERIES_XACLIENT:
+                case MQC.TRANSPORT_MQSERIES_MANAGED:
+                    connectionProperties.Add(MQC.HOST_NAME_PROPERTY, "my hostname");
+                    connectionProperties.Add(MQC.CHANNEL_PROPERTY, "channel");
+                    break;
+            }
+
+            connectionProperties.Add(MQC.USER_ID_PROPERTY, "FRAM$WRK");
+            connectionProperties.Add(MQC.PASSWORD_PROPERTY, "FR85931");
+
+
+            return connectionProperties;
+        }
+
+        private void buttonRecycle_Click(object sender, EventArgs e)
+        {
+            if (this.dataGridViewAppPools.SelectedRows.Count > 0)
+            {
+                DirectoryEntry root = null;
+
+                foreach(DataGridViewRow row in this.dataGridViewAppPools.SelectedRows)
+                {
+                    var iisAppPool = row.DataBoundItem as appPool;
+
+                    // http://www.hurryupandwait.io/blog/recycling-an-application-pool-with-c
+                    // There may be other causes, but I have found that one reason this error may occur is if you have not enabled the Windows feature: IIS Metabase and IIS 6 configuration compatibility(see image below). I am using IIS 7, but this feature is required to use the above code.
+
+                    root = new DirectoryEntry("IIS://" + textBoxAppServer.Text + "/" + iisAppPool.Name, AdminUser, AdminPassword);
+                    root.Invoke("Recycle");
+                }
+            }
         }
     }
 }
