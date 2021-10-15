@@ -42,6 +42,7 @@ namespace MESTools
                 "BT TST: UABE0MDV06.UABEPRD.COM",
                 "BT ACC: UABE0MDV03.UABEPRD.COM",
                 "BT PRD: UABE0MAP02.UABEPRD.COM",
+                "BT PRD: UABE0MAP01.UABEPRD.COM",
 
             };
             this.comboBoxServers.DataSource = list.ToArray();
