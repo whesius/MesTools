@@ -50,10 +50,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>F539F6F861C60107DEBD742DF5DEE087A6562374</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>700DD8F2CB6EA3F5EE6C2F66164352A2F5517A08</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>MESTools_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>MESTools_1_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -282,6 +282,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="MESTools_1_TemporaryKey.pfx" />
     <None Include="MESTools_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

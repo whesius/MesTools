@@ -9,7 +9,7 @@
       <Value Profile="(Default)">UABEPRD</Value>
     </Setting>
     <Setting Name="AdminPassword" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Letme!in26bn9</Value>
+      <Value Profile="(Default)"></Value>
     </Setting>
   </Settings>
 </SettingsFile>
